@@ -1,0 +1,23 @@
+.btn {
+	margin: 8px 5px;
+}
+.sidebar .btn {
+	display: block;
+}
+.gifdiv {
+	float: left;
+	margin: 10px 12px;
+}
+.gifdiv p {
+	margin-bottom: 10px;
+}
+.main {
+	margin: 1.5rem 0;
+}
+.main-content h1 {
+  font-size: 2rem;
+}
+.download-btn {
+	display: inline-block;
+	margin: 1rem 0;
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      GifTastic!
+    </title>
+    <meta charset="utf-8">
+      <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
+      <link href="public/css/reset.css" rel="stylesheet" type="text/css" />
+      <link href="public/css/style.css" rel="stylesheet" type="text/css" />
+    </meta>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 buttons">
+        </div>
+      </div>
+      <div class="row main">
+        <div class="col-12 col-md-3 sidebar">
+          <div class="form-group">
+            <label class="my-3" for="userinput">
+              <strong>
+                Add a comedian:
+              </strong>
+            </label>
+            <input class="form-control my-3" id="userinput" type="text">
+              <input class="btn btn-info my-3" type="submit" value="Search">
+              </input>
+              <input class="btn btn-success my-3" type="submit" value="+10">
+              </input>
+            </input>
+          </div>
+          <div>
+          	Welcome to Comedy GIFtastic, a hilarious web app powered by the GIPHY API!<br><br>
+          	Click a button above to generate a set of comedy GIFs. Click "+10" to load 10 more GIFs.<br><br>Click on a GIF to watch it play and click it again to stop. Download the GIF using the Download button.<br><br>You can also search for more GIFs by using the search bar!
+          </div>
+        </div>
+        <div class="col-12 col-md-9 main-content">
+        </div>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+    </script>
+    <script src="public/javascript/app.js" type="text/javascript">
+    </script>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "name": "comedy-giftastic",
+  "version": "1.0.0",
+  "description": "**View all your favorite comedy gifs in one app!**",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sharebot-joe/Comedy-GifTastic.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sharebot-joe/Comedy-GifTastic/issues"
+  },
+  "homepage": "https://github.com/sharebot-joe/Comedy-GifTastic#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "path": "^0.12.7"
+  }
+}

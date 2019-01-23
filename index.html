@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>
-      GifTastic!
+      GIF Finder
     </title>
     <meta charset="utf-8">
       <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
@@ -19,21 +19,22 @@
       <div class="row main">
         <div class="col-12 col-md-3 sidebar">
           <div class="form-group">
-            <label class="my-3" for="userinput">
+            <label for="userinput">
               <strong>
-                Add a comedian:
+                Find a comedian:
               </strong>
             </label>
-            <input class="form-control my-3" id="userinput" type="text">
-              <input class="btn btn-info my-3" type="submit" value="Search">
+            <input class="form-control" id="userinput" type="text">
+              <input class="btn btn-info" type="submit" value="Search">
               </input>
-              <input class="btn btn-success my-3" type="submit" value="+10">
+              <input class="btn btn-success" type="submit" value="Add 10">
               </input>
             </input>
           </div>
           <div>
-          	Welcome to Comedy GIFtastic, a hilarious web app powered by the GIPHY API!<br><br>
-          	Click a button above to generate a set of comedy GIFs. Click "+10" to load 10 more GIFs.<br><br>Click on a GIF to watch it play and click it again to stop. Download the GIF using the Download button.<br><br>You can also search for more GIFs by using the search bar!
+            <p>
+          	Click a button above to generate a set of comedy GIFs. Click "Add 10" to add 10 more GIFs.<br><br>Click on a GIF to watch it play and click it again to stop playing. Download the GIF using the Download button.<br><br>You can also search for more GIFs by using the search bar.
+            </p>
           </div>
         </div>
         <div class="col-12 col-md-9 main-content">
@@ -42,7 +43,7 @@
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
     </script>
-    <script src="public/javascript/app.js" type="text/javascript">
+    <script src="./app.js" type="text/javascript">
     </script>
   </body>
 </html>

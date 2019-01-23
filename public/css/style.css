@@ -1,14 +1,23 @@
 .btn {
-	margin: 8px 5px;
+	margin: 10px 0px;
 }
 .sidebar .btn {
 	display: block;
 }
-.gifdiv {
+.sidebar label {
+	margin: 10px 0px;
+}
+.sidebar p {
+	line-height: 1.2;
+}
+.buttons .btn {
+	margin-right: 10px;
+}
+.gif-wrap {
 	float: left;
 	margin: 10px 12px;
 }
-.gifdiv p {
+.gif-wrap p {
 	margin-bottom: 10px;
 }
 .main {

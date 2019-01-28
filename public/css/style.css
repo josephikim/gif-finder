@@ -1,21 +1,35 @@
+body {
+	/*background: black;*/
+}
 .btn {
 	margin: 10px 0px;
 }
-.sidebar .btn {
-	display: block;
+.row.sidebar-content {
+	margin-right: 0;
+	margin-left: 0;
 }
-.sidebar label {
-	margin: 10px 0px;
+.sidebar-content {
+	background: #DCDCDC;
+	padding: 1rem;
+}
+.sidebar .btn {
+	float: left;
+	margin-right: 14px;
 }
 .sidebar p {
 	line-height: 1.2;
+	margin-bottom: 1rem;
+}
+
+.form-control {
+	display: inline-block;
 }
 .buttons .btn {
 	margin-right: 10px;
 }
 .gif-wrap {
 	float: left;
-	margin: 10px 12px;
+	margin: 10px 12px;	
 }
 .gif-wrap p {
 	margin-bottom: 10px;
@@ -24,9 +38,14 @@
 	margin: 1.5rem 0;
 }
 .main-content h1 {
-  font-size: 2rem;
+	font-size: 2rem;
 }
 .download-btn {
 	display: inline-block;
 	margin: 1rem 0;
+}
+#scrollable_div {
+	overflow: auto;
+	height: 90vh;
+	/*border: solid thin green;*/
 }

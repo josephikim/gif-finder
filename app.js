@@ -24,11 +24,12 @@ $(document).ready(function() {
       $('<button></button').text(text).addClass('btn btn-info').appendTo('.buttons')
   }
 
-  function getTen(queryURL) {
+  function loadGifs(topic, query) {
     $.ajax({
-      url: queryURL,
+      url: query,
       method: "GET"
     }).then(function(response) {
+      console.log('response', response)
       if (!$.trim(response.data)){
         $('.main-content').html("<h1>No results found! Try again!</h1>");
         return
@@ -45,8 +46,8 @@ $(document).ready(function() {
         var rating = $('<p>Rating: ' + obj.rating.toUpperCase() + '</p>')
         var animateLink = obj.images.fixed_height.url;
         var stillLink = obj.images['480w_still'].url;
-        var downloadLink = `https://media.giphy.com/media/${obj.id}/giphy.gif`
-        var downloadBtn = $(`<a class="btn btn-success download-btn" href="${downloadLink}" download>Download GIF</a>`)
+        var downloadLink = obj.images.original.url;
+        var downloadBtn = $(`<a class="btn btn-success download-btn" href="${downloadLink}" target="_blank" download>Download GIF</a>`)
         img.attr({
           src: obj.images['480w_still'].url,
           height: 200,
@@ -61,87 +62,25 @@ $(document).ready(function() {
         div.append(downloadBtn)
         $('.main-content').append(div)
       })
+      // Increment offset
+      offset += limit
+      var index = topics.findIndex(item => topic.toLowerCase() === item.toLowerCase());
+      if(index < 1) addButton(topic)
     })
   }
 
-  function addTenHandler() {
-    $('input[value="+10"]').on("click", function(event) {
-      event.preventDefault();
-
-      // var queryBaseURL = 'https://api.giphy.com/v1/gifs/search?api_key=' + apiKey + '&limit=' + limit + '&offset=' + offset + '&q='
-      var string = encodeURIComponent(lastClicked);
-      console.log('addtenquery offset:', offset)
-      var queryURL = queryBaseURL + offset + '&q=' + string
-      console.log('addtenquery:', queryURL)
-
-      // ajax call
-      $.ajax({
-        url: queryURL,
-        method: "GET"
-      }).then(function(response) {
-        console.log('queryURL: ' + queryURL);
-        console.log(response)
-
-        // For each element of the response's data object...
-        response.data.forEach(function(obj) {
-
-          // Creating new div
-          var div = $('<div class = \'gif-wrap\'></div>')
-
-          var rating = $('<p>Rating: ' + obj.rating + '</p>')
-          //Creating placeholder image
-          var img = $('<img>')
-          img.attr({
-            src: obj.images['480w_still'].url,
-            height: 200
-          })
-
-          // Function that toggles gif playback via click
-          img.click(function() {
-            var currentSrc = img.attr('src')
-            var stillURL = obj.images['480w_still'].url
-            var gifURL = obj.images.fixed_height.url
-
-            if (currentSrc.endsWith('jpg')) {
-              img.attr('src', gifURL)
-            } else if (currentSrc.endsWith('gif')) {
-              img.attr('src', stillURL)
-            }
-          });
-
-          // Bundle up new div
-          div.append(rating)
-          div.append(img)
-
-          // Add new div to main section
-          $('.main-content').append(div)
-        })
-      })
-      offset += limit
-      console.log('new offset:', offset)
-    });
+  function addButton(string) {
+    topics.push(string.toTitleCase())
+    console.log(topics)
+    $('.buttons').empty();
+    initializeButtons(topics);
   }
-  // Main Program
-  initializeButtons(topics);
 
-  // When the user clicks a topic, make API call to get 10 gif objects from the Giphy API and display them.
-  $(document).on('click', '.buttons .btn', function() {
-    var fired_button = $(this).text();
-    var string = encodeURIComponent(fired_button);
-    if(fired_button !== lastClicked) {
-      $('.main-content').empty();
-      offset = 0;
-    }
-    var queryURL = queryBaseURL + offset + '&q=' + string
+  // Clear userinput on click
+  $('#userinput').on("click", function() {
+    $('#userinput').attr('value', '');
 
-    // ajax call
-    getTen(queryURL);
-
-    // update variables
-    offset += limit
-    lastClicked = fired_button
-    addTenHandler();
-  });
+  })
 
   // Toggle GIF playback on click
   $(document).on('click', '.main-content img', function() {
@@ -156,7 +95,7 @@ $(document).ready(function() {
   })
 
   // Handler for 'Download GIF' buttons
-  $(document).on('click', '.gif-wrap a', function() {
+  $('.gif-wrap a').on("click", function() {
     var queryURL = $(this).attr("href");
     console.log('clicked link', queryURL)
     $.ajax({
@@ -174,42 +113,72 @@ $(document).ready(function() {
     });
   })
 
-  // Click handler for search bar submit
+    // var onChange = function(evt) {
+    //   console.info(this.value);
+    //   // or
+    //   console.info(evt.target.value);
+    // };
+    // var input = document.getElementById('userinput');
+    // input.addEventListener('input', onChange, false);
+
+
+  // Handler for search button
   $('input[value="Search"]').on("click", function(event) {
     event.preventDefault();
+    lastClicked = $("#userinput").val().trim()
+    // Check for duplicate input
+    var index = topics.findIndex(item => lastClicked.toLowerCase() === item.toLowerCase());
+    // console.log('index:', index);
+    // console.log('userinput current value', document.getElementById("userinput").value)
 
-    // This line checks for input from the textbox
-    var input = $("#userinput").val().trim().toLowerCase();
-    console.log(input)
-    // console.log("topics.indexof(input):", topics.toLowerCase().indexOf(input))
-    // var newInput = new Boolean(topics.toLowerCase().indexOf(input) < 0)
-    // console.log('newInput?:', newInput)
-
-
-    // var array = ['I', 'hAve', 'theSe', 'ITEMs'],
-    // query = 'these',
-    var index = topics.findIndex(item => input.toLowerCase() === item.toLowerCase());
-    console.log('index:', index);
-
-
-
-    if (input != '' && input != $("#userinput").defaultValue && index < 0) {
-
-      // Make new queryURL
-      var string = encodeURIComponent(input);
+    // if (lastClicked != '' && lastClicked != $("#userinput").defaultValue && index < 0) {
+    if (lastClicked != '' && document.getElementById("userinput").value != null && index < 0) {
+      // Set queryURL
+      offset = 0
+      var string = encodeURIComponent(lastClicked);
       var queryURL = queryBaseURL + offset + '&q=' + string
       console.log('new queryURL: ' + queryURL)
-
-      // ajax call 
-      $.ajax({
-        url: queryURL,
-        method: "GET"
-      }).then(function(response) {
-        topics.push(input.toTitleCase())
-        console.log(topics)
-        $('.buttons').empty();
-        initializeButtons();
-      })
+      $('.main-content').empty();
+      loadGifs(lastClicked, queryURL)
+    } else {
+      console.log('last clicked:', lastClicked)
+      $("#userinput").attr("value","Try again!")
     }
   });
+
+  // Handler for Moar! button
+  $('input[value="Moar!"]').on("click", function() {
+    console.log('lastClicked', lastClicked)
+    if(lastClicked) {
+      string = encodeURIComponent(lastClicked)
+      // Make AJAX call
+      var queryURL = queryBaseURL + offset + '&q=' + string
+      console.log('queryUrl', queryURL)
+      loadGifs(lastClicked, queryURL)
+    }
+  });
+
+  // Handler for topic buttons. When the user clicks on a topic, make an API call to get 10 gif objects from the Giphy API and display them.
+  $(document).on('click', '.buttons .btn', function() {
+    var firedButton = $(this).text();
+    var string = encodeURIComponent(firedButton);
+    $('#userinput').attr('value', 'Enter a search term');
+
+    // Clear screen if user clicked on a different button
+    if(firedButton !== lastClicked) {
+      $('.main-content').empty();
+      offset = 0;
+    }
+
+    // Update last clicked
+    lastClicked = firedButton
+
+    // Make AJAX call
+    var queryURL = queryBaseURL + offset + '&q=' + string
+    console.log('queryURL', queryURL)
+    loadGifs(firedButton, queryURL)
+
+  });
+  // Main Program
+  initializeButtons(topics);
 });

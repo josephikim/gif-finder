@@ -12,32 +12,36 @@
   </head>
   <body>
     <div class="container">
-      <div class="row">
+      <div class="row main">
         <div class="col-12 buttons">
         </div>
       </div>
       <div class="row main">
         <div class="col-12 col-md-3 sidebar">
-          <div class="form-group">
+          <div class="row sidebar-content">
+            <div class="form-group">
             <label for="userinput">
-              <strong>
-                Find a comedian:
-              </strong>
             </label>
-            <input class="form-control" id="userinput" type="text">
+            <input class="form-control" id="userinput" type="text" value="Enter a search term">
               <input class="btn btn-info" type="submit" value="Search">
               </input>
-              <input class="btn btn-success" type="submit" value="Add 10">
+              <input class="btn btn-success" type="submit" value="Moar!">
               </input>
             </input>
           </div>
           <div>
-            <p>
-          	Click a button above to generate a set of comedy GIFs. Click "Add 10" to add 10 more GIFs.<br><br>Click on a GIF to watch it play and click it again to stop playing. Download the GIF using the Download button.<br><br>You can also search for more GIFs by using the search bar.
+            <p>Use the buttons above to generate a set GIFs usign the Giphy API.
+            </p>
+            <p>Click "Moar!" to add 10 more GIFs.
+            </p>
+            <p>Click on a GIF to toggle playback. You can also download individual GIFs using the "Download GIF" button.
+            </p>
+            <p>Try searching for more GIFs by using the search bar.
             </p>
           </div>
+          </div>
         </div>
-        <div class="col-12 col-md-9 main-content">
+        <div class="col-12 col-md-9 main-content" id="scrollable_div">
         </div>
       </div>
     </div>

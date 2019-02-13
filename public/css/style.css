@@ -1,51 +1,147 @@
-body {
-	/*background: black;*/
+/* Layout styles */
+header {
+  position: fixed;
+  top: 0;
+  z-index: 1;
 }
-.btn {
-	margin: 10px 0px;
+
+header>.row>div[class^="col-"]:last-of-type {
+  background: white;
 }
-.row.sidebar-content {
-	margin-right: 0;
-	margin-left: 0;
+
+header .row {
+  margin: 0;
 }
-.sidebar-content {
-	background: #DCDCDC;
-	padding: 1rem;
+
+header div[class^="col-"] {
+  padding-left: 0;
+  padding-right: 0;
 }
-.sidebar .btn {
-	float: left;
-	margin-right: 14px;
+
+#sidebar {
+  background: #015561;
+  padding: 14px 24px;
 }
-.sidebar p {
-	line-height: 1.2;
-	margin-bottom: 1rem;
+
+#sidebar input {
+  margin-bottom: 0.5rem;
+}
+
+#sidebar .btn {
+  float: left;
+  margin: 10px 0px;
+  margin-right: 12px;
+}
+
+#sidebar p {
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  color: #fff;
 }
 
 .form-control {
-	display: inline-block;
+  display: inline-block;
 }
-.buttons .btn {
-	margin-right: 10px;
+
+#buttons {
+  background-color: lightgray;
+  margin: 0;
+  padding: 14px;
 }
-.gif-wrap {
-	float: left;
-	margin: 10px 12px;	
+
+#buttons .btn {
+  margin: 10px 0px;
+  margin-right: 12px;
 }
-.gif-wrap p {
-	margin-bottom: 10px;
-}
-.main {
-	margin: 1.5rem 0;
-}
-.main-content h1 {
-	font-size: 2rem;
-}
-.download-btn {
-	display: inline-block;
-	margin: 1rem 0;
-}
+
+/* Styling gifs */
 #scrollable_div {
-	overflow: auto;
-	height: 90vh;
-	/*border: solid thin green;*/
+  margin-left: 12px;
+  margin-right: 12px;
+  margin-bottom: 72px;
+  /*border: solid thin green;*/
+}
+
+.gif-wrap {
+  position: relative;
+  width: 100%;
+  padding: 1rem;
+  /*border: 1px solid red;*/
+}
+
+.gif-wrap p {
+  margin-bottom: 10px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.gif-img-wrap {
+  position: relative;
+  height: 225px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  /*border: 1px solid yellow;*/
+}
+
+.gif-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 80px;
+  filter: opacity(35%);
+  /*border: 1px solid green;*/
+}
+
+.gif {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translateY(-50%) translateX(-50%);
+  height: 100%;
+  /*border: 1px solid blue;*/
+  z-index: -1;
+}
+
+.download-link {
+  display: inline-block;
+  font-size: 12px;
+}
+
+/* Footer styles */
+#footer {
+  position: fixed;
+  bottom: 0;
+  background-color: #015561;
+  color: #fff;
+  height: 60px;
+  width: 100%;
+  line-height: 60px;
+  text-align: center;
+  font-weight: bold;
+}
+
+#footer a {
+  color: #17a2b8;
+}
+
+/* Media queries*/
+@media (min-width: 768px) {
+  .container {
+    max-width: 1080px;
+  }
+
+  #sidebar {
+    margin: 0 auto;
+    width: 90%;
+    padding: 1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .gif-wrap {
+    width: 45%;
+  }
 }

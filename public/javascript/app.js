@@ -29,7 +29,7 @@ $(document).ready(function() {
     console.log('lastClicked', lastClicked)
     if(topic.toLowerCase() !== lastClicked.toLowerCase()) {
       // Clear displayed content
-      $('.main-content').empty();
+      $('#scrollable-div').empty();
       // Reset query offset
       offset = 0;
       // Update last clicked
@@ -41,7 +41,7 @@ $(document).ready(function() {
     }).then(function(response) {
       console.log('response', response)
       if (!$.trim(response.data)){
-        $('.main-content').prepend("<h1>No results found! Try again!</h1>");
+        $('#scrollable-div').prepend("<h1>No results found! Try again!</h1>");
         return
       }
       // For each element of the response's data object...
@@ -88,7 +88,7 @@ $(document).ready(function() {
         // Add new div to main section
         div.append(rating, divInner, downloadBtn)
         // console.log(div[0].outerHTML)
-        $('.main-content').append(div)
+        $('#scrollable-div').append(div)
         // html.append(img).append("<br>")
         // html.append(downloadBtn)
         // $('.main-content').append(html)
@@ -184,7 +184,7 @@ $(document).ready(function() {
 
     // Clear screen if user clicked on a different button
     if(firedButton.toLowerCase() !== lastClicked.toLowerCase()) {
-      $('.main-content').empty();
+      $('#scrollable-div').empty();
     }
 
     // Make AJAX call

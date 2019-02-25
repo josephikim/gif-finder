@@ -13,9 +13,9 @@
   </head>
 
   <body>
-    <header>
+    <div class="container-fluid">
       <div class="row main">
-        <div class="col-12 col-md-3">
+        <header class="col-12 col-md-3">
           <div class="row" id="sidebar">
             <div class="form-group">
               <label for="userinput">
@@ -28,36 +28,40 @@
               </input>
             </div>
             <div>
-              <p>Click a topic button to display 10 GIFs.
+              <p>Click a button to display 10 GIFs.
               </p>
-              <p>Click "Moar!" to display 10 more.
+              <p>Click "Moar!" to add 10 more.
               </p>
-              <p>Play or stop any GIF by clicking on it. Download it with the download link.
+              <p>You can play any GIF by clicking on it. You can also download the GIF using the "Download GIF" button.
               </p>
-              <p>Find more GIFs by using the search bar.
+              <p>Try searching for more GIFs by using the search bar.
               </p>
             </div>
           </div>
-        </div>
-        <div class="col-12 col-md-9">
-          <div class="row" id="buttons">
-            <div class="col-12">
+        </header>
+        <section class="col-12 col-md-9">
+          <div class="container-fluid">
+            <div class="row" id="buttons">
+              <div class="col-12">
+              </div>
+            </div>
+            <div class="row" id="content-wrapper">
+              <div class="col-12">
+                <div class="container-fluid">
+                  <div class="row" id="scrollable-div">
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-    </header>
-    <div class="container">
-      <div class="row main">
-        <div class="col-12">
-          <div class="row main-content" id="scrollable_div">
-          </div>
-        </div>
+        </section>
       </div>
     </div>
-    <footer>
-      <div id="footer">
-        Powered by the <a href="https://developers.giphy.com/docs/" target="_blank">Giphy API</a>
+    <footer class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          Powered by the <a href="https://developers.giphy.com/docs/" target="_blank">Giphy API</a>
+        </div>
       </div>
     </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">

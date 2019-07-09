@@ -16,7 +16,7 @@ $(document).ready(function() {
     });
   };
 
-  // Functions
+
   function initializeButtons(arr) {
     $('#buttons').empty();
     for (let text of arr)
@@ -25,16 +25,6 @@ $(document).ready(function() {
   }
 
   function loadGifs(topic, queryURL) {
-    console.log('loadgifs topic', topic)
-    console.log('lastClicked', lastClicked)
-    if(topic.toLowerCase() !== lastClicked.toLowerCase()) {
-      // Clear displayed content
-      $('#scrollable-div').empty();
-      // Reset query offset
-      offset = 0;
-      // Update last clicked
-      lastClicked = topic
-    }
     $.ajax({
       url: queryURL,
       method: "GET"
@@ -45,17 +35,17 @@ $(document).ready(function() {
         return
       }
       // For each element of the response's data object...
-      response.data.forEach(function(obj) {
+      response.data.forEach(function(currentValue, index) {
 
         // Create image
         var img = $('<img>')
-        var rating = $('<p>Rating: ' + obj.rating.toUpperCase() + '</p>')
-        var animateLink = obj.images.fixed_height.url; // string
-        var stillLink = obj.images['480w_still'].url; // string
-        var downloadLink = obj.images.original.url; // string
+        var rating = $('<span>Rating: <b>' + currentValue.rating.toUpperCase() + '</b></span>')
+        var animateLink = currentValue.images.fixed_height.url; // string
+        var stillLink = currentValue.images['480w_still'].url; // string
+        var downloadLink = currentValue.images.original.url; // string
         var downloadBtn = $(`<a class="download-link" href="${downloadLink}" target="_blank" download>Download GIF >></a>`)
         img.attr({
-          src: obj.images['480w_still'].url,
+          src: currentValue.images['480w_still'].url,
           // width: 400,
           "class": "gif",
           "data-state": "still",
@@ -71,24 +61,16 @@ $(document).ready(function() {
           // style: "padding: 75px",
           // "data-state": "still",
         })
-        // console.log('playButtonImg', playButtonImg)
-        //  console.log('typeof playButtonImg', typeof playButtonImg)
-        // Create new div
-        // var html = $('<div class = \'gif-wrap\'></div>')
         var div = $('<div class = \'gif-wrap\'></div>')
         var divInner = $('<div class = \'gif-img-wrap\'></div>')
-        // console.log('makinng div')
-        // var div = $(rating + '<div class="gif-wrap"></div>')
-        // console.log('div', div[0].outerHTML)
-        // console.log('html', html[0].outerHTML)
-        // console.log('type of div', typeof div)
-        // Testing addition of playbutton div
         divInner.append(playButtonImg, img)
-        // console.log(div[0].outerHTML)
-        // Add new div to main section
         div.append(rating, divInner, downloadBtn)
-        // console.log(div[0].outerHTML)
-        $('#scrollable-div').append(div)
+        // Add gif container to fluid bootstrap divs consecutively
+        // $('#scrollable-div').append(div)
+        console.log('index', index)
+        var gifContainer = $('<div class="col-sm-12 col-md-6 col-lg-4 col-xl-3"><div class="gif-container img-fluid" id="' + `${index}` + '"></div></div>')
+        $('div#scrollable-div').append(gifContainer)
+        $(`div#${index}.gif-container`).append(div)
         // html.append(img).append("<br>")
         // html.append(downloadBtn)
         // $('.main-content').append(html)
@@ -98,8 +80,8 @@ $(document).ready(function() {
       offset += limit
       // Add button for current topic if not displayed
       var lowercaseTopics = topics.map(v => v.toLowerCase());
-      var index = lowercaseTopics.indexOf(topic.toLowerCase());
-      if(index < 0) addButton(topic)
+      var matchIndex = lowercaseTopics.indexOf(topic.toLowerCase());
+      if(matchIndex < 0) addButton(topic)
     })
   }
 
@@ -120,7 +102,12 @@ $(document).ready(function() {
     // var lowercaseTopics = topics.map(v => v.toLowerCase());
     // var index = lowercaseTopics.indexOf(input.toLowerCase());
     // console.log('index', index)
-
+    if(input.toLowerCase() !== lastClicked.toLowerCase()) {
+      // $('#scrollable-div').empty();
+      $('.gif-container').empty();
+    }
+    offset = 0;
+    lastClicked = input
     // API call
     var string = encodeURIComponent(input);
     var queryURL = queryBaseURL + offset + '&q=' + string
@@ -130,14 +117,14 @@ $(document).ready(function() {
 
   function placeContentContainer() {
     // Adjust top margin of container div
-    var contentPlacement = $("header").position().top + $("header").height();
+    var contentPlacement = $("#buttons").position().top + $("buttons").height();
     $('.container').css('margin-top',contentPlacement);
   }
   // Toggle GIF playback on click
   // $(document).on('click', '.main-content img', function() {
   //   var state = $(this).attr("data-state");
   //   if (state === "still") {
-  //     $(this).attr("src", $(this).attr("data-animate"));
+  //     $(this).attr("sr c", $(this).attr("data-animate"));
   //     $(this).attr("data-state", "animate");
   //   } else {
   //     $(this).attr("src", $(this).attr("data-still"));
@@ -184,9 +171,11 @@ $(document).ready(function() {
 
     // Clear screen if user clicked on a different button
     if(firedButton.toLowerCase() !== lastClicked.toLowerCase()) {
-      $('#scrollable-div').empty();
+      // $('#scrollable-div').empty();
+      $('.gif-container').empty();
     }
-
+    offset = 0
+    lastClicked = firedButton
     // Make AJAX call
     var queryURL = queryBaseURL + offset + '&q=' + string
     console.log('queryURL', queryURL)
@@ -229,6 +218,28 @@ $(document).ready(function() {
       link.click();
     });
   })
+
+// Toggle bootstrap nav handlers 
+  $( ".close" ).hide();
+  $( ".menu" ).hide();
+  $( ".hamburger" ).click(function() {
+    // $( ".menu" ).slideToggle( "slow", function() {
+    //   $( ".hamburger" ).hide();
+    //   $( ".close" ).show();
+    // });
+    $( ".menu" ).show();
+    $( ".hamburger" ).hide();
+    $( ".close" ).show();
+  });
+  $( ".close" ).click(function() {
+    // $( ".menu" ).slideToggle( "slow", function() {
+    //   $( ".close" ).hide();
+    //   $( ".hamburger" ).show();
+    // });
+    $( ".menu" ).hide();
+    $( ".close" ).hide();
+    $( ".hamburger" ).show();
+  });
 
   // Main Program
   initializeButtons(topics);

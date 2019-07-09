@@ -1,3 +1,86 @@
+/* Navbar  */
+.navbar {
+  background: rgba(0, 28, 118, 0.3);
+  /*display: inline-block;*/
+  border: 1px solid gray;
+  margin-bottom: 0px;
+}
+.navbar > .nav {
+  margin-left: 12px;
+}
+
+/* Toggle menu  */
+.menu{
+  font-weight:bold;
+  font-size:0.8em;
+  width:300px;
+  height: 100%;
+  background: rgba(0, 255, 0, 0.5);
+  text-align:center;
+  margin:0px;
+}
+.menu ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  list-style-image: none;
+}
+.menu li {
+  display: block;
+  padding:15px 0 15px 0;
+  border-bottom:#1d1f20 1px solid;
+  }
+.menu li:hover{
+  display: block;
+  background:#181818;
+  padding:15px 0 15px 0;
+  border-bottom:#1d1f20 1px solid;
+}
+.menu ul li a {
+ text-decoration:none;
+ margin: 0px;
+ color:#fff;}
+.menu ul li a:hover {
+ color: #fff;
+ text-decoration:none;
+}
+.menu a{
+  text-decoration:none;
+  color:white;
+}
+.menu a:hover{
+  text-decoration:none;
+  color:white;
+}
+#menu {
+  background: #015561;
+  padding: 14px 24px;
+}
+#menu input {
+  margin-bottom: 0.5rem;
+}
+#menu #userinput {
+  padding: 6px;
+}
+#menu .btn {
+  margin: 10px 0px;
+  margin-right: 12px;
+}
+#menu p {
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+/* Toggle menu buttons */
+#buttons {
+  background-color: lightgray;
+  padding: 14px;
+}
+
+#buttons .btn {
+  margin: 10px 0px;
+  margin-right: 12px;
+}
 /* Layout styles */
 html {
   height: 100%;
@@ -5,25 +88,6 @@ html {
 .container-fluid {
   /*height: 100%;*/
 }
-header {
-  position: fixed;
-  top: 0;
-  z-index: 1;
-}
-
-header>.row>div[class^="col-"]:last-of-type {
-  background: white;
-}
-
-header .row {
-  margin: 0;
-}
-
-header div[class^="col-"] {
-  padding-left: 0;
-  padding-right: 0;
-}
-
 .container {
   padding-left: 0;
   padding-right: 0;
@@ -36,41 +100,12 @@ header div[class^="col-"] {
   padding-right: 0;
   padding-left: 0;
 }
-#sidebar {
-  background: #015561;
-  padding: 14px 24px;
-}
 
-#sidebar input {
-  margin-bottom: 0.5rem;
-}
 
-#sidebar .btn {
-  float: left;
-  margin: 10px 0px;
-  margin-right: 12px;
+/* Gif styles */
+.gif-container {
+  border: 1px solid green;
 }
-
-#sidebar p {
-  line-height: 1.2;
-  margin-bottom: 1rem;
-  color: #fff;
-}
-
-.form-control {
-  display: inline-block;
-}
-
-#buttons {
-  background-color: lightgray;
-  padding: 14px;
-}
-
-#buttons .btn {
-  margin: 10px 0px;
-  margin-right: 12px;
-}
-
 /* Styling gifs */
 #scrollable_div {
   margin-left: 12px;
@@ -83,19 +118,19 @@ header div[class^="col-"] {
   position: relative;
   width: 100%;
   padding: 1rem;
+  text-align: center;
   /*border: 1px solid red;*/
 }
 
-.gif-wrap p {
-  margin-bottom: 10px;
-  font-size: 12px;
-  font-weight: bold;
+.gif-wrap span {
+  font-size: 14px;
 }
 
 .gif-img-wrap {
   position: relative;
   height: 225px;
-  margin-bottom: 10px;
+  margin-top: 12px;
+  margin-bottom: 12px;
   overflow: hidden;
   /*border: 1px solid yellow;*/
 }
@@ -128,19 +163,17 @@ header div[class^="col-"] {
 }
 
 /* Footer styles */
-footer {
+#menu-footer {
   position: fixed;
   bottom: 0;
-  background-color: #015561;
+  left: 50px;
   color: #fff;
-  height: 60px;
-  width: 100%;
-  line-height: 60px;  
+  height: 30px;
   text-align: center;
   font-weight: bold;
 }
 
-footer a {
+#menu-footer a {
   color: #17a2b8;
 }
 

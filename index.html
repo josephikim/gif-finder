@@ -6,7 +6,8 @@
       GIF Finder
     </title>
     <meta charset="utf-8">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" /> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="public/css/reset.css" rel="stylesheet" type="text/css" />
     <link href="public/css/style.css" rel="stylesheet" type="text/css" />
     </meta>
@@ -15,55 +16,88 @@
   <body>
     <div class="container-fluid">
       <div class="row main">
-        <header class="col-12 col-md-3">
-          <div class="row" id="sidebar">
-            <div class="form-group">
-              <label for="userinput">
-              </label>
-              <input class="form-control" id="userinput" type="text" value="Enter a search term">
+        <div class="navbar">
+          <ul class="nav navbar-nav pull-left">
+            <li>
+              <p class="navbar-btn hamburger">
+                <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+              </p>
+            </li>
+            <li>
+              <p class="navbar-btn close">
+                <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></a>
+              </p>
+            </li>
+          </ul>
+          <div class="navbar-header pull-left">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="*">GIF Finder</a>
+          </div>
+        </div>
+        <!--/.navbar -->
+        <div class="menu" style="display: block; float:left;">
+          <div class="form-group">
+            <input id="userinput" type="text" value="Enter a search term">
+            </input>
+            <div>
               <input class="btn btn-info" type="submit" value="Search">
               </input>
               <input class="btn btn-success" type="submit" value="Moar!">
               </input>
-              </input>
-            </div>
-            <div>
-              <p>Click a button to display 10 GIFs.
-              </p>
-              <p>Click "Moar!" to add 10 more.
-              </p>
-              <p>You can play any GIF by clicking on it. You can also download the GIF using the "Download GIF" button.
-              </p>
-              <p>Try searching for more GIFs by using the search bar.
-              </p>
             </div>
           </div>
-        </header>
-        <section class="col-12 col-md-9">
-          <div class="container-fluid">
-            <div class="row" id="buttons">
-              <div class="col-12">
-              </div>
-            </div>
-            <div class="row" id="content-wrapper">
-              <div class="col-12">
-                <div class="container-fluid">
-                  <div class="row" id="scrollable-div">
-                  </div>
-                </div>
-              </div>
+          <div class="sidebar-text">
+            <p>Click a button to display 10 GIFs.
+            </p>
+            <p>Click "Moar!" to add 10 more.
+            </p>
+            <p>You can play any GIF by clicking on it. You can also download the GIF using the "Download GIF" button.
+            </p>
+            <p>Try searching for more GIFs by using the search bar.
+            </p>
+          </div>
+          <div class="row" id="buttons">
+            <div class="col-12">
             </div>
           </div>
-        </section>
-      </div>
-    </div>
-    <footer class="container-fluid">
-      <div class="row">
-        <div class="col-12">
-          Powered by the <a href="https://developers.giphy.com/docs/" target="_blank">Giphy API</a>
+          <div class="row" id="menu-footer">
+            <div class="col-12">
+              Powered by the <a href="https://developers.giphy.com/docs/" target="_blank">Giphy API</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-9 container-fluid">
+          <div class="row container-fluid" id="scrollable-div">
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+              <div class="gif-container img-fluid" id="0"></div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+              <div class="gif-container img-fluid" id="1"></div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+              <div class="gif-container img-fluid" id="2"></div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+              <div class="gif-container img-fluid" id="3"></div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+              <div class="gif-container img-fluid" id="4"></div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+              <div class="gif-container img-fluid" id="5"></div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+              <div class="gif-container img-fluid" id="6"></div>
+            </div>
+          </div>
         </div>
       </div>
-    </footer>
+    </div>
+    <!-- Javascript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
     </script>
     <script src="./public/javascript/app.js" type="text/javascript">

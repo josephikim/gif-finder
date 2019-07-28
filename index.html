@@ -35,7 +35,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="*">GIF Finder</a>
+            <a class="navbar-brand" href="index.html">GIF Finder</a>
           </div>
         </div>
         <!--/.navbar -->
@@ -44,20 +44,18 @@
             <input id="userinput" type="text" value="Enter a search term">
             </input>
             <div>
-              <input class="btn btn-info" type="submit" value="Search">
+              <input class="btn btn-success" type="submit" value="Search">
               </input>
-              <input class="btn btn-success" type="submit" value="Moar!">
+              <input class="btn btn-warning" type="submit" value="MOAR">
               </input>
             </div>
           </div>
           <div class="sidebar-text">
-            <p>Click a button to display 10 GIFs.
+            <p>Use the search bar to search for GIFs.
             </p>
-            <p>Click "Moar!" to add 10 more.
+            <p>Click "MOAR" to see 10 more.
             </p>
-            <p>You can play any GIF by clicking on it. You can also download the GIF using the "Download GIF" button.
-            </p>
-            <p>Try searching for more GIFs by using the search bar.
+            <p>Play any GIF by clicking on it. Click the "Download" button to download.
             </p>
           </div>
           <div class="row" id="buttons">
@@ -66,11 +64,13 @@
           </div>
           <div class="row" id="menu-footer">
             <div class="col-12">
-              Powered by the <a href="https://developers.giphy.com/docs/" target="_blank">Giphy API</a>
+              <div id="footer-content">
+                Powered by the <a href="https://developers.giphy.com/docs/" target="_blank">Giphy API</a>
+              </div>
             </div>
           </div>
         </div>
-        <div class="col-12 col-md-9 container-fluid">
+        <div class="col-12 container-fluid">
           <div class="row container-fluid" id="scrollable-div">
             <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
               <div class="gif-container img-fluid" id="0"></div>

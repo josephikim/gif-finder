@@ -6,7 +6,7 @@ $(document).ready(function() {
   var limit = 10
   var offset = 0
   var lastClicked = ''
-  var topics = ['Dave Chappelle', 'Kate McKinnon', 'Adam Sandler', 'Jim Carrey', 'Will Ferrell']
+  var topics = ['Dave Chappelle', 'Chris Farley', 'Adam Sandler', 'Jim Carrey', 'Will Ferrell']
   var queryBaseURL = 'https://api.giphy.com/v1/gifs/search?api_key=' + apiKey + '&limit=' + limit + '&offset='
   // Prototypes
   // Converts a string to Title Case
@@ -20,7 +20,7 @@ $(document).ready(function() {
   function initializeButtons(arr) {
     $('#buttons').empty();
     for (let text of arr)
-      $('<button></button').text(text).addClass('btn btn-info').appendTo('#buttons')
+      $('<button></button').text(text).addClass('btn btn-primary').appendTo('#buttons')
     console.log('offset', offset)
   }
 
@@ -43,7 +43,7 @@ $(document).ready(function() {
         var animateLink = currentValue.images.fixed_height.url; // string
         var stillLink = currentValue.images['480w_still'].url; // string
         var downloadLink = currentValue.images.original.url; // string
-        var downloadBtn = $(`<a class="download-link" href="${downloadLink}" target="_blank" download>Download GIF >></a>`)
+        var downloadBtn = $(`<a class="download-link" href="${downloadLink}" target="_blank" download>Download >></a>`)
         img.attr({
           src: currentValue.images['480w_still'].url,
           // width: 400,
@@ -151,8 +151,8 @@ $(document).ready(function() {
     }
   }, false);
 
-  // Handler for Moar! button
-  $('input[value="Moar!"]').on("click", function() {
+  // Handler for MOAR button
+  $('input[value="MOAR"]').on("click", function() {
     console.log('lastClicked', lastClicked)
     if(lastClicked) {
       string = encodeURIComponent(lastClicked)

@@ -22,10 +22,11 @@ p {
   /*background: rgba(0, 255, 0, 0.5);*/
   position: relative;
   background: #5AC1DE;
-  height: calc(100% - 52px);
+  height: calc(100vh - 52px);
   margin:0px;
   padding: 14px 24px;
   text-align:center;
+  overflow: auto;
 }
 .menu ul {
   margin: 0;
@@ -98,7 +99,7 @@ html {
   height: 100%;
 }
 .main .container-fluid {
-  height: calc(100% - 52px);
+  height: calc(100vh - 52px);
   margin-left: 0;
   margin-right: 0;
   background-color: #085f78;
@@ -114,7 +115,10 @@ html {
   margin-left: 12px;
   margin-right: 12px;
   margin-bottom: 72px;
-  /*border: solid thin green;*/
+  /*height: height: calc(100vh - 52px);*/
+  height: auto;
+  border: solid 1px yellow;
+  overflow: auto;
 }
 
 .gif-wrap {
@@ -127,6 +131,7 @@ html {
 
 .gif-wrap span {
   font-size: 14px;
+  color: #fff;
 }
 
 .gif-img-wrap {
@@ -157,12 +162,13 @@ html {
   -webkit-transform: translateY(-50%) translateX(-50%);
   height: 100%;
   /*border: 1px solid blue;*/
-  z-index: -1;
+  z-index: 0;
 }
 
 .download-link {
   display: inline-block;
   font-size: 12px;
+  color: #7eb1dc;
 }
 
 /* Footer styles */
@@ -221,3 +227,4 @@ html {
     max-width: 400px;
   }
 }
+

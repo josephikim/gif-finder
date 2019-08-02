@@ -90,7 +90,7 @@ $(document).ready(function() {
     console.log(topics)
     $('#buttons').empty();
     initializeButtons(topics);
-    placeContentContainer()
+    // placeContentContainer()
   }
 
   function performSearch() {
@@ -115,11 +115,11 @@ $(document).ready(function() {
     loadGifs(input, queryURL)
   }
 
-  function placeContentContainer() {
-    // Adjust top margin of container div
-    var contentPlacement = $("#buttons").position().top + $("buttons").height();
-    $('.container').css('margin-top',contentPlacement);
-  }
+  // function placeContentContainer() {
+  //   // Adjust top margin of container div
+  //   var contentPlacement = $("#buttons").position().top + $("buttons").height();
+  //   $('.container').css('margin-top',contentPlacement);
+  // }
   // Toggle GIF playback on click
   // $(document).on('click', '.main-content img', function() {
   //   var state = $(this).attr("data-state");
@@ -243,6 +243,6 @@ $(document).ready(function() {
 
   // Main Program
   initializeButtons(topics);
-  placeContentContainer();
-  window.addEventListener('resize', () => placeContentContainer());
+  // placeContentContainer();
+  // window.addEventListener('resize', () => placeContentContainer());
 });

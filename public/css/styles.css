@@ -3,7 +3,6 @@
 */
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 
-
 body {
   font-family: 'Poppins', sans-serif;
   background: #fafafa;
@@ -30,7 +29,7 @@ a:focus {
   background: #fafafa;
   border: none;
   border-radius: 0;
-  margin-bottom: 40px;
+  margin-bottom: 14px;
   /*box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);*/
 }
 .navbar .container-fluid {
@@ -58,7 +57,7 @@ a:focus {
 }
 
 /* ---------------------------------------------------
-    SIDEBAR STYLES
+    SIDEBAR STYLE
 ----------------------------------------------------- */
 .wrapper {
   display: flex;
@@ -119,6 +118,11 @@ a:focus {
   margin-bottom: 18px;
   padding: 6px;
 }
+
+#sidebar .buttons {
+  padding-top: 18px;
+}
+
 #sidebar .btn {
   margin-right: 12px;
   margin-bottom: 10px;
@@ -143,48 +147,9 @@ a:focus {
   bottom: 18px;
 }
 
-
-a[data-toggle="collapse"] {
-  position: relative;
-}
-
-a[aria-expanded="false"]::before,
-a[aria-expanded="true"]::before {
-  content: '\e259';
-  display: block;
-  position: absolute;
-  right: 20px;
-  font-family: 'Glyphicons Halflings';
-  font-size: 0.6em;
-}
-
-a[aria-expanded="true"]::before {
-  content: '\e260';
-}
-
-
-a.download {
-  background: #fff;
-  color: #7386D5;
-}
-
-a.article,
-a.article:hover {
-  background: #6d7fcc !important;
-  color: #fff !important;
-}
-
-
-
 /* ---------------------------------------------------
-    CONTENT STYLE
+    SIDEBAR COLLAPSE STYLE
 ----------------------------------------------------- */
-#content {
-  width: 100%;
-  padding: 20px;
-  min-height: 100vh;
-  transition: all 0.3s;
-}
 
 #sidebarCollapse {
   width: 28px;
@@ -224,6 +189,61 @@ a.article:hover {
 }
 
 
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+#content {
+  width: 100%;
+  padding: 20px;
+  min-height: 100vh;
+  transition: all 0.3s;
+  overflow: auto;
+}
+
+.gif-container {
+  position: relative;
+  margin: 18px 8px;
+  overflow: hidden;
+  text-align: center;
+  /*border: 1px solid green;*/
+}
+.gif-container span {
+  font-size: 14px;
+  color: #333;
+}
+.gif-img-wrap {
+  margin: 8px 0;
+  height: 225px;
+  /*border: 1px solid yellow;*/
+}
+.gif-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 80px;
+  filter: opacity(35%);
+  /*border: 1px solid green;*/
+}
+.gif {
+  position: absolute;
+  /*max-width: 100%;*/
+  max-height: 225px;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translateY(-50%) translateX(-50%);
+  height: 100%;
+  /*border: 1px solid blue;*/
+  z-index: -1;
+}
+
+.download-link {
+  display: inline-block;
+  font-size: 14px;
+  color: #7eb1dc;
+}
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */

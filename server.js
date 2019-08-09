@@ -1,12 +1,7 @@
-// const express        = require('express');
-
 import express from 'express';
+import bodyParser from 'body-parser';
 
-
-const bodyParser     = require('body-parser');
-
-
-const app            = express();
+const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -29,7 +24,6 @@ app.get('/', (req, res) => {
       res.json(JSON.parse(body));
     }
 })
-
 
 const port = 8000;
 app.listen(port, () => {  console.log('We are live on ' + port);});

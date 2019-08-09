@@ -1,5 +1,3 @@
-// var axios = require('axios')
-
 $(document).ready(function() {
   // Global objects
   var apiKey = 'tj4h4gdxevqPIJTUM8kTJjt91EWJTm9D'
@@ -20,11 +18,18 @@ $(document).ready(function() {
   }
 
   function initializeButtons(arr) {
-    for (let item of arr)
-      $('<button></button').text(item).addClass('btn btn-primary').appendTo('#sidebar .buttons')
+    $('#sidebar .buttons').empty()
+    for (let item of arr) {
+      var button = $('<button>')
+      button.text(item).addClass(
+        'btn btn-primary').append(
+        '<img class="close-icon" src="public/images/redx.png"/>').appendTo(
+        '#sidebar .buttons')
+    }
   }
 
   function loadGifs(name, queryURL) {
+    console.log('queryURL', queryURL)
     $.ajax({
       url: queryURL,
       method: "GET"
@@ -137,7 +142,21 @@ $(document).ready(function() {
     var queryURL = queryBaseURL + offset + '&q=' + encodeURIComponent(lastClicked)
     loadGifs(lastClicked, queryURL)
   });
-
+  
+  // Handler for close icon
+  $(document).on('click', '.close-icon', function(event) {
+    event.stopPropagation();
+    var name = $(this).parent().text()
+    console.log('name:', name)
+    // remove name from names array
+    var index = names.indexOf(name)
+    if (index > -1) {
+      names.splice(index, 1)
+    }
+    console.log('names:', names)
+    initializeButtons(names)
+  })
+  // Handler for playing and stopping GIFs
   $(document).on('click', '.gif-img-wrap', function() {
     $(this).children('.gif-overlay').attr('style', 'display: none')
     var gif = $(this).children('.gif')

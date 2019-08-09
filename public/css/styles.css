@@ -23,7 +23,10 @@ a:focus {
   text-decoration: none;
   transition: all 0.3s;
 }
-
+.nav>li>a:focus,
+.nav>li>a:hover {
+  background-color: inherit;
+}
 .navbar {
   /*padding: 15px 10px;*/
   background: #fafafa;
@@ -118,15 +121,30 @@ a:focus {
   margin-bottom: 18px;
   padding: 6px;
 }
-
-#sidebar .buttons {
-  padding-top: 18px;
-}
-
 #sidebar .btn {
   margin-right: 12px;
   margin-bottom: 10px;
 }
+
+#sidebar .buttons {
+  padding-top: 18px;
+}
+#sidebar .buttons .btn {
+  position: relative;
+  /* z-index: 0; */
+}
+
+.close-icon {
+  position: absolute;
+  top: -7px;
+  right: -8px;
+  width: 18px;
+  background: transparent;
+  /* z-index: 2; */
+}
+
+
+
 #sidebar .form-group .btn:last-of-type{
   margin-right: 0;
 }
